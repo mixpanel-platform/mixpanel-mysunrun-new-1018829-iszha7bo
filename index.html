@@ -7,6 +7,9 @@
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
   <body class="mixpanel-platform-body">
+    <div class="graph-labels" id="label1">
+      <font size="16">Line Graph:</font>
+    </div>
     <div class="mixpanel-platform-section">
       <div id="eventSelect" style="float: left;"></div>
       <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
@@ -15,36 +18,250 @@
       <div style="clear: both;"></div>
       <div id="graph"></div>
     </div>
-    <div id="table"></div>
+    <div class="graph-labels" id="label2">
+      <font size="16">Bar Graph:</font>
+    </div>
+    <div class="mixpanel-platform-section">
+      <div id="eventSelect2" style="float: left;"></div>
+      <div id="by2" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
+      <div id="propSelect2" style="float: left;"></div>
+      <div id="dateSelect2" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <div id="graph2"></div>
+    </div>
+    <div class="graph-labels" id="label3">
+      <font size="16">Stacked Bar Graph:</font>
+    </div>
+    <div class="mixpanel-platform-section">
+      <div id="eventSelect3" style="float: left;"></div>
+      <div id="by3" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
+      <div id="propSelect3" style="float: left;"></div>
+      <div id="dateSelect3" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <div id="graph3"></div>
+    </div>
+    <div class="graph-labels" id="label4">
+      <font size="16">Normalized Stacked Bar Graph:</font>
+    </div>
+    <div class="mixpanel-platform-section">
+      <div id="eventSelect4" style="float: left;"></div>
+      <div id="by4" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
+      <div id="propSelect4" style="float: left;"></div>
+      <div id="dateSelect4" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <div id="graph4"></div>
+    </div>
+    <div class="graph-labels" id="label5">
+      <font size="16">Pie Graph:</font>
+    </div>
+    <div class="mixpanel-platform-section">
+      <div id="eventSelect5" style="float: left;"></div>
+      <div id="by5" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
+      <div id="propSelect5" style="float: left;"></div>
+      <div id="dateSelect5" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <div id="graph5"></div>
+    </div>
+    <div class="graph-labels" id="label6">
+      <font size="16">Table:</font>
+    </div>
+    <div class="mixpanel-platform-section">
+      <div id="eventSelect6" style="float: left;"></div>
+      <div id="by6" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
+      <div id="propSelect6" style="float: left;"></div>
+      <div id="dateSelect6" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <div id="table6"></div>
+    </div>
+    <div class="graph-labels" id="label7">
+      <font size="16">Map:</font>
+    </div>
+    <div class="mixpanel-platform-section">
+      <div id="eventSelect7" style="float: left;"></div>
+      <div id="dateSelect7" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <div id="chart7"></div>
+    </div>
     <script>
       var eventSelect = $('#eventSelect').MPEventSelect();
       var propSelect  = $('#propSelect').MPPropertySelect();
       var dateSelect  = $('#dateSelect').MPDatepicker();
-      var eventGraph  = $('#graph').MPChart({chartType: 'line'});
-      var eventTable  = $('#table').MPTable({
+      var eventGraph  = $('#graph').MPChart({chartType: 'line', highchartsOptions: {
+        title: { text: "Line Chart", style: { "fontWeight": "bold", "font-size": "24px" } }
+      }});
+      
+      var eventSelect2 = $('#eventSelect2').MPEventSelect();
+      var propSelect2  = $('#propSelect2').MPPropertySelect();
+      var dateSelect2  = $('#dateSelect2').MPDatepicker();
+      var eventGraph2  = $('#graph2').MPChart({chartType: 'bar', highchartsOptions: {
+        title: { text: "Bar Chart", style: { "fontWeight": "bold", "font-size": "24px" } }
+      }});
+      
+      var eventSelect3 = $('#eventSelect3').MPEventSelect();
+      var propSelect3  = $('#propSelect3').MPPropertySelect();
+      var dateSelect3  = $('#dateSelect3').MPDatepicker();
+      var eventGraph3  = $('#graph3').MPChart({chartType: 'bar', stacked: true, highchartsOptions: {
+        title: { text: "Stacked Bar Chart", style: { "fontWeight": "bold", "font-size": "24px" } }
+      }});
+      
+      var eventSelect4 = $('#eventSelect4').MPEventSelect();
+      var propSelect4  = $('#propSelect4').MPPropertySelect();
+      var dateSelect4  = $('#dateSelect4').MPDatepicker();
+      var eventGraph4  = $('#graph4').MPChart({chartType: 'bar', stacked: true, normalized: true, highchartsOptions: {
+        title: { text: "Normalized Stacked Bar Chart", style: { "fontWeight": "bold", "font-size": "24px" } }
+      }});
+      
+      var eventSelect5 = $('#eventSelect5').MPEventSelect();
+      var propSelect5 = $('#propSelect5').MPPropertySelect();
+      var dateSelect5  = $('#dateSelect5').MPDatepicker();
+      var eventGraph5  = $('#graph5').MPChart({chartType: 'pie', highchartsOptions: {
+        title: { text: "Pie Chart", style: { "fontWeight": "bold", "font-size": "24px" } }
+      }});
+      
+      var eventSelect6 = $('#eventSelect6').MPEventSelect();
+      var propSelect6  = $('#propSelect6').MPPropertySelect();
+      var dateSelect6  = $('#dateSelect6').MPDatepicker();
+      var eventTable6  = $('#table6').MPTable({
         showPercentages: true,
         firstColHeader: 'Event'
       });
+      
+      var eventSelect7 = $('#eventSelect7').MPEventSelect();
+      var dateSelect7  = $('#dateSelect7').MPDatepicker();
+      var eventChart7  = $('#chart7').MPChart({chartType: 'map'});
 
       var runQuery = function() {
         var eventName = eventSelect.MPEventSelect('value'),
             propName  = propSelect.MPPropertySelect('value'),
             dateRange = dateSelect.MPDatepicker('value');
-
+            
+        var eventName2 = eventSelect2.MPEventSelect('value'),
+            propName2  = propSelect2.MPPropertySelect('value'),
+            dateRange2 = dateSelect2.MPDatepicker('value');
+            
+        var eventName3 = eventSelect3.MPEventSelect('value'),
+            propName3  = propSelect3.MPPropertySelect('value'),
+            dateRange3 = dateSelect3.MPDatepicker('value');
+            
+        var eventName4 = eventSelect4.MPEventSelect('value'),
+            propName4  = propSelect4.MPPropertySelect('value'),
+            dateRange4 = dateSelect4.MPDatepicker('value');
+        
+        var eventName4 = eventSelect4.MPEventSelect('value'),
+            propName4  = propSelect4.MPPropertySelect('value'),
+            dateRange4 = dateSelect4.MPDatepicker('value');
+            
+        var eventName5 = eventSelect5.MPEventSelect('value'),
+            propName5  = propSelect5.MPPropertySelect('value'),
+            dateRange5 = dateSelect5.MPDatepicker('value');
+            
+        var eventName6 = eventSelect6.MPEventSelect('value'),
+            propName6  = propSelect6.MPPropertySelect('value'),
+            dateRange6 = dateSelect6.MPDatepicker('value'); 
+            
+        var eventName7 = eventSelect7.MPEventSelect('value'),
+            dateRange7 = dateSelect7.MPDatepicker('value'); 
+        
         if (eventName) {
           MP.api.segment(eventName, propName, dateRange).done(function(results) {
             eventGraph.MPChart('setData', results);
-            eventTable.MPTable('setData', results);
+          });
+        }
+        
+        if (eventName2) {
+          MP.api.segment(eventName2, propName2, dateRange2).done(function(results) {
+            eventGraph2.MPChart('setData', results);
+          });
+        }
+        
+        if (eventName3) {
+          MP.api.segment(eventName3, propName3, dateRange3).done(function(results) {
+            eventGraph3.MPChart('setData', results);
+          });
+        }
+        
+        if (eventName4) {
+          MP.api.segment(eventName4, propName4, dateRange4).done(function(results) {
+            eventGraph4.MPChart('setData', results);
+          });
+        }
+        
+        if (eventName5) {
+          MP.api.segment(eventName5, propName5, dateRange5).done(function(results) {
+            eventGraph5.MPChart('setData', results);
+          });
+        }
+        
+        if (eventName6) {
+          MP.api.segment(eventName6, propName6, dateRange6).done(function(results) {
+            eventTable6.MPTable('setData', results);
+          });
+        }
+        
+        if (eventName7) {
+          MP.api.segment(eventName7, "mp_country_code", dateRange7).done(function(results) {
+            eventChart7.MPChart('setData', results);
           });
         }
       };
+      
       eventSelect.on('change', function(e, eventName) {
         propSelect.MPPropertySelect('setEvent', eventName);
         $("#by").show();
         runQuery();
       });
+      
+      eventSelect2.on('change', function(e, eventName) {
+        propSelect2.MPPropertySelect('setEvent', eventName);
+        $("#by2").show();
+        runQuery();
+      });
+      
+      eventSelect3.on('change', function(e, eventName) {
+        propSelect3.MPPropertySelect('setEvent', eventName);
+        $("#by3").show();
+        runQuery();
+      });
+      
+      eventSelect4.on('change', function(e, eventName) {
+        propSelect4.MPPropertySelect('setEvent', eventName);
+        $("#by4").show();
+        runQuery();
+      });
+      
+      eventSelect5.on('change', function(e, eventName) {
+        propSelect5.MPPropertySelect('setEvent', eventName);
+        $("#by5").show();
+        runQuery();
+      });
+      
+      eventSelect6.on('change', function(e, eventName) {
+        propSelect6.MPPropertySelect('setEvent', eventName);
+        $("#by6").show();
+        runQuery();
+      });
+      
+      eventSelect7.on('change', runQuery);
+      
       propSelect.on('change', runQuery);
       dateSelect.on('change', runQuery);
+      
+      propSelect2.on('change', runQuery);
+      dateSelect2.on('change', runQuery);
+      
+      propSelect3.on('change', runQuery);
+      dateSelect3.on('change', runQuery);
+      
+      propSelect4.on('change', runQuery);
+      dateSelect4.on('change', runQuery);
+      
+      propSelect5.on('change', runQuery);
+      dateSelect5.on('change', runQuery);
+      
+      propSelect6.on('change', runQuery);
+      dateSelect6.on('change', runQuery);
+      
+      dateSelect7.on('change', runQuery);
     </script>
   </body>
 </html>
